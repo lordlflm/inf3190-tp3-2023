@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+    <div class="home-content-block">
+        <div class="home-search-bar">
+            <form class="search-bar-form">
+                <input type="text" placeholder="Chercher un animal" id="search-bar" name="search-bar">
+                <button type="submit" id="search-bar-submit" name="search-bar-submit"></button>
+            </form>
+        </div>
+        <hr>
+        <h1>Voir les animaux en adoption</h1>
+        <div class="home-animals-container">
+            {% for animal in animals %}
+                <div class="home-single-animal">
+                    <a href="/{{ animal.get("id") }}">
+                        <div>
+                            <h2>{{ animal.get("nom") }}</h2>
+                            <p>{{ animal.get("espece") }} - {{ animal.get("age") }} ans</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

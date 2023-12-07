@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>{{ title }}</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div>
+            <ul>
+                <li class="navbar-item">
+                    <a href="/">Acceuil</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/form">Mise en adoption</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/adopt">Adopter</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

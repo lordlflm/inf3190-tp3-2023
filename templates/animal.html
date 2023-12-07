@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+    <div class="single-animal-display">
+        <h1><span>Mon nom est</span> {{ animal.get("nom") }}</h1>
+        <div class="animal-details">
+            <hr>
+            <h2>Détails de l'animal</h2>
+            <p>{{ animal.get("espece") }} de race {{ animal.get("race") }}</p>
+            <p>{{ animal.get("age") }} ans</p>
+            <p>{{ animal.get("description") }}</p>
+            <hr>
+            <h2>Détails du propriétaire</h2>
+            <a target="_blank" href="https://www.google.com/maps/place/{{ animal.get("cp") }}">{{ animal.get("adresse") }}, {{ animal.get("ville") }}, {{ animal.get("cp") }}</a>
+            <br>
+            <br>
+            <div class="interactive-mail">
+                <!-- TODO: might remove if not working -->
+                <a target="_blank" href="mailto:{{ animal.get("courriel") }}?subject=Adoption de {{ animal.get("nom") }}&body=Bonjour,%0D%0AJe suis intéressé par l'adoption de {{ animal.get("nom") }}. SVP me laisser savoir s'il est encore disponible%0D%0A%0D%0ACordialement">{{ animal.get("courriel") }}</a>
+                <a target="_blank" href="mailto:{{ animal.get("courriel") }}?subject=Adoption de {{ animal.get("nom") }}&body=Bonjour,%0D%0AJe suis intéressé par l'adoption de {{ animal.get("nom") }}. SVP me laisser savoir s'il est encore disponible%0D%0A%0D%0ACordialement"><img src="../img/mail-icon.png" alt="mail icon missing" width="20" height="20"></a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-# Copyright 2023 <Votre nom et code permanent>
+# Copyright 2023 <Thomas Laflamme LAFT68050205>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from random import randint
 from flask import Flask
 from flask import render_template
 from flask import g
@@ -34,7 +35,34 @@ def close_connection(exception):
         db.disconnect()
 
 
-@app.route('/')
+@app.route("/")
+def home():
+    db = get_db()
+    animallist = db.get_animaux()
+    animaltodisplaylist = list()
+    i = 0
+    while i < 5:
+        if len(animallist) == 0:
+            break
+        animalindex = randint(0, len(animallist) - 1)
+        animalid = animallist[animalindex].get("id")
+        animallist.pop(animalindex)
+        animaltodisplaylist.append(db.get_animal(animalid))
+        i += 1
+    close_connection("exception")
+    return render_template("home.html", title="Acceuil", animals=animaltodisplaylist)
+
+@app.route("/<animalid>")
+def animal(animalid):
+    db = get_db()
+    animal = db.get_animal(animalid)
+    close_connection("exception")
+    return render_template("animal.html", title=animal.get("nom"), animal=animal)
+
+@app.route("/form")
 def form():
-    # À remplacer par le contenu de votre choix.
-    return render_template('form.html')
+    return render_template("form.html", title="Mise en adoption")
+
+@app.route("/adopt")
+def adopt():
+    return render_template("adopt.html", title="Adoption")
