@@ -158,3 +158,85 @@ body {
 .interactive-mail a {
     padding: 0 5px;
 }
+
+.adopt-content-block {
+    margin-top: 2%;
+    display: block;
+    justify-content: center;
+    height: 80%;
+}
+
+.animals-result-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.adopt-single-animal {
+    flex-basis: 45%;
+    margin: 2% 2%;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(111, 113, 114);
+    border-radius: 15px;
+}
+
+.adoption-form {
+    display: block;
+}
+
+.form-content-block {
+    margin: 2% 0;
+}
+
+.form-content-block h1 {
+    margin: 0;
+    padding: 2%;
+    text-align: center;
+}
+
+.adoption-form div {
+    padding: 0 20% 2% 2%;
+    display: flex;
+    justify-content: center;
+}
+
+div.adoption-form-label-div {
+    padding: 0 2% 0 0;
+    width: 22%;
+    justify-content: right;
+}
+
+.adoption-form input {
+    height: 1em;
+}
+
+.adoption-form textarea {
+    resize: none;
+    height: 10em;
+    width: 17em;
+}
+
+.adoption-form button#submit {
+    margin: 0;
+    width: 27%;
+    height: 3em;
+    background-color: rgb(228, 191, 92);
+}
+
+.adoption-form button#submit:hover {
+    background-color: rgb(250, 117, 0);
+}
+
+div.error-msg-div {
+    display: block;
+}
+
+div.error-msg-div p {
+    color: red;
+    margin: 0.1em 0;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.1em;
+    padding: 0.2em;
+}

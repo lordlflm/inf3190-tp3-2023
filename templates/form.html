@@ -1,6 +1,119 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<p>This is the form</p>
+    <div id="form-content-block" class="form-content-block">
+        <h1>Mettre un animal en adoption</h1>
+        <form id="form" class="adoption-form" action="/validation" method="post">
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="nom">Nom :</label>
+                </div>
+                <input type="text" id="nom" name="nom">
+                <div class="error-msg-div">
+                    <p id="empty-nom" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="length-nom" class="error-msg" hidden>Ce champ doit avoir entre 3 et 20 caractères</p>
+                    <p id="comma-nom" class="error-msg" hidden>Ce champ ne peut contenir de virgule</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="espece">Espèce :</label>
+                </div>
+                <input type="text" id="espece" name="espece">
+                <div class="error-msg-div">
+                    <p id="empty-espece" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="comma-espece" class="error-msg" hidden>Ce champ ne peut contenir de virgule</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="race">Race :</label>
+                </div>
+                <input type="text" id="race" name="race">
+                <div class="error-msg-div">
+                    <p id="empty-race" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="comma-race" class="error-msg" hidden>Ce champ ne peut contenir de virgule</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="age">Âge :</label>
+                </div>
+                <input type="text" id="age" name="age">
+                <div class="error-msg-div">
+                    <p id="empty-age" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="comma-age" class="error-msg" hidden>Ce champ ne peut contenir de virgule ou de point</p>
+                    <p id="invalid-age" class="error-msg" hidden>L'âge doit être une valeur numérique entre 0 et 30</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="description">Description :</label>
+                </div>
+                <textarea id="description" name="description"></textarea>
+                <div class="error-msg-div">
+                    <p id="empty-description" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="comma-description" class="error-msg" hidden>Ce champ ne peut contenir de virgule</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="courriel">Courriel :</label>
+                </div>
+                <input type="text" id="courriel" name="courriel">
+                <div class="error-msg-div">
+                    <p id="empty-courriel" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="comma-courriel" class="error-msg" hidden>Ce champ ne peut contenir de virgule</p>
+                    <p id="invalid-courriel" class="error-msg" hidden>L'adresse courriel n'a pas un format valide</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="adresse">Adresse civique :</label>
+                </div>
+                <input type="text" id="adresse" name="adresse">
+                <div class="error-msg-div">
+                    <p id="empty-adresse" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="comma-adresse" class="error-msg" hidden>Ce champ ne peut contenir de virgule</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="ville">Ville :</label>
+                </div>
+                <input type="text" id="ville" name="ville">
+                <div class="error-msg-div">
+                    <p id="empty-ville" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="comma-ville" class="error-msg" hidden>Ce champ ne peut contenir de virgule</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                    <label for="cp">Code postal :</label>
+                </div>
+                <input type="text" id="cp" name="cp">
+                <div class="error-msg-div">
+                    <p id="empty-cp" class="error-msg" hidden>Ce champ est obligatoire</p>
+                    <p id="comma-cp" class="error-msg" hidden>Ce champ ne peut contenir de virgule</p>
+                    <p id="invalid-cp" class="error-msg" hidden>Le code postal doit avoir un format canadien</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="adoption-form-label-div">
+                </div>
+                <button type="submit" id="submit" name="submit">Soumettre</button>
+            </div>
+        </form>
+    </div>
+    <script src="../js/script.js"></script>
 
 {% endblock %}

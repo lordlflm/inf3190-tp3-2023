@@ -1,6 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<p>This is the adoption page</p>
+    <div class="adopt-content-block">
+        <div class="animals-result-container">
+            {% if animals %}
+                {% for animal in animals %}
+                    <div class="adopt-single-animal">
+                        <h2>{{ animal.get("nom") }}</h2>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucun animal ne correspond à la recherche</p>
+            {% endif %}
+        </div>
+    </div>
 
 {% endblock %}

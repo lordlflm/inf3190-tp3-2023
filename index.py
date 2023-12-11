@@ -16,6 +16,8 @@ from random import randint
 from flask import Flask
 from flask import render_template
 from flask import g
+from flask import request
+from flask import redirect, url_for
 from .database import Database
 
 app = Flask(__name__, static_url_path="", static_folder="static")
@@ -59,10 +61,28 @@ def animal(animalid):
     close_connection("exception")
     return render_template("animal.html", title=animal.get("nom"), animal=animal)
 
-@app.route("/form")
+@app.route("/form", methods=["POST", "GET"])
 def form():
     return render_template("form.html", title="Mise en adoption")
 
-@app.route("/adopt")
+@app.route("/adopt", methods=["POST", "GET"])
 def adopt():
-    return render_template("adopt.html", title="Adoption")
+    keyword = request.form.get("search-bar")
+    db = get_db()
+    animals = db.get_animaux()
+    animalstodisplay = list()
+    if keyword is not None:
+        for animal in animals:
+            for key in animal:
+                if keyword.upper() in str(animal[key]).upper():
+                   animalstodisplay.append(animal)
+                   break
+    else:
+        animalstodisplay = animals
+    close_connection("excpetion")
+    return render_template("adopt.html", title="Adoption", animals=animalstodisplay)
+
+@app.route("/validation", methods=["POST"])
+def validate():
+
+    return redirect(url_for("home"))
