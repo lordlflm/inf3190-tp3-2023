@@ -181,12 +181,43 @@ body {
     border-radius: 15px;
 }
 
+.adopt-single-animal a {
+    size: 100%;
+}
+
+.adopt-single-animal a:visited,
+.adopt-single-animal a:link {
+    text-decoration: none;
+    color: black;
+}
+
+.adopt-single-animal a:hover {
+    color: rgb(84, 101, 116);
+}
+
+.adopt-single-animal p {
+    padding: 2%;
+    margin: 0;
+}
+
+.adopt-single-animal h2 {
+    padding: 2%;
+    margin: 0;
+}
+
 .adoption-form {
     display: block;
 }
 
 .form-content-block {
     margin: 2% 0;
+}
+
+.form-content-block p.backend-error-msg {
+    text-align: center;
+    color: red;
+    padding-top: 2%;
+    margin: 0;
 }
 
 .form-content-block h1 {
@@ -239,4 +270,9 @@ div.error-msg-div p {
     border-color: black;
     border-width: 0.1em;
     padding: 0.2em;
+}
+
+.content-404 {
+    text-align: center;
+    color: red;
 }

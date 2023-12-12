@@ -6,7 +6,12 @@
             {% if animals %}
                 {% for animal in animals %}
                     <div class="adopt-single-animal">
-                        <h2>{{ animal.get("nom") }}</h2>
+                        <a href="/{{ animal.get("id") }}">
+                            <div>
+                                <h2>{{ animal.get("nom") }}</h2>
+                                <p>{{ animal.get("description") }} ans</p>
+                            </div>
+                        </a>
                     </div>
                 {% endfor %}
             {% else %}

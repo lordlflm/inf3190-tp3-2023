@@ -17,7 +17,7 @@ from flask import Flask
 from flask import render_template
 from flask import g
 from flask import request
-from flask import redirect, url_for
+from flask import redirect
 from .database import Database
 
 app = Flask(__name__, static_url_path="", static_folder="static")
@@ -43,6 +43,7 @@ def home():
     animallist = db.get_animaux()
     animaltodisplaylist = list()
     i = 0
+
     while i < 5:
         if len(animallist) == 0:
             break
@@ -58,12 +59,13 @@ def home():
 def animal(animalid):
     db = get_db()
     animal = db.get_animal(animalid)
+
     close_connection("exception")
     return render_template("animal.html", title=animal.get("nom"), animal=animal)
 
 @app.route("/form", methods=["POST", "GET"])
 def form():
-    return render_template("form.html", title="Mise en adoption")
+    return render_template("form.html", title="Mise en adoption", error="")
 
 @app.route("/adopt", methods=["POST", "GET"])
 def adopt():
@@ -71,6 +73,7 @@ def adopt():
     db = get_db()
     animals = db.get_animaux()
     animalstodisplay = list()
+
     if keyword is not None:
         for animal in animals:
             for key in animal:
@@ -84,5 +87,26 @@ def adopt():
 
 @app.route("/validation", methods=["POST"])
 def validate():
+    nom = request.form["nom"]
+    espece = request.form["espece"]
+    race = request.form["race"]
+    age = request.form["age"]
+    desc = request.form["description"]
+    courriel = request.form["courriel"]
+    adresse = request.form["adresse"]
+    ville = request.form["ville"]
+    cp = request.form["cp"]
+    error = ""
 
-    return redirect(url_for("home"))
+    if not nom or not nom.strip() or not espece or not espece.strip() or not race or not race.strip() or not age or not age.strip() or not desc or not desc.strip() or not courriel or not courriel.strip() or not adresse or not adresse.strip() or not ville or not ville.strip() or not cp or not cp.strip():
+        error = "Désolé. Le serveur n'a pu gérer la soumission du formulaire. SVP essayer de nouveau."
+    if error:
+        return render_template("form.html", title="Mise en adoption", error=error)
+    db = get_db()
+    newid = db.add_animal(nom, espece, race, age, desc, courriel, adresse, ville, cp,)
+    close_connection("exception")
+    return redirect(f"/{newid}")
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html'), 404
