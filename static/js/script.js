@@ -1,6 +1,8 @@
 const COURRIEL_REGEX = /^\S+@\S+\.\S+$/;
 const EMPTY_REGEX = /^$/;
 const CP_REGEX = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+const ADRESSE_REGEX = /\d+(\s\w+)/;
+const VILLE_REGEX = /\D+/;
 
 let nom = document.getElementById("nom");
 let espece = document.getElementById("espece");
@@ -23,6 +25,8 @@ let emptyAdresse = document.getElementById("empty-adresse");
 let emptyVille = document.getElementById("empty-ville");
 let emptyCp = document.getElementById("empty-cp");
 
+let invalidVille = document.getElementById("invalid-ville");
+let invalidAdresse = document.getElementById("invalid-adresse");
 let invalidCp = document.getElementById("invalid-cp");
 let invalidCourriel = document.getElementById("invalid-courriel");
 let invalidAge = document.getElementById("invalid-age");
@@ -36,7 +40,6 @@ let commaCourriel = document.getElementById("comma-courriel");
 let commaAdresse = document.getElementById("comma-adresse");
 let commaVille = document.getElementById("comma-ville");
 let commaCp = document.getElementById("comma-cp");
-
 
 function isEmpty(inputValue) {
     return EMPTY_REGEX.test(inputValue);
@@ -113,6 +116,9 @@ function onChangeValidation() {
 
         if (containsComma(adresse.value)) commaAdresse.hidden = false;
         else commaAdresse.hidden = true;
+
+        if (!ADRESSE_REGEX.test(adresse.value)) invalidAdresse.hidden = false;
+        else invalidAdresse.hidden = true;
     });
     
     ville.addEventListener("change", function(e) {
@@ -120,6 +126,9 @@ function onChangeValidation() {
 
         if (containsComma(ville.value)) commaVille.hidden = false;
         else commaVille.hidden = true;
+
+        if (!VILLE_REGEX.test(ville.value)) invalidVille.hidden = false;
+        else invalidVille.hidden = true;
     });
     
     cp.addEventListener("change", function(e) {

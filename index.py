@@ -17,7 +17,7 @@ from flask import Flask
 from flask import render_template
 from flask import g
 from flask import request
-from flask import redirect
+from flask import redirect, url_for
 from .database import Database
 
 app = Flask(__name__, static_url_path="", static_folder="static")
@@ -61,7 +61,10 @@ def animal(animalid):
     animal = db.get_animal(animalid)
 
     close_connection("exception")
-    return render_template("animal.html", title=animal.get("nom"), animal=animal)
+    if (animal is None):
+        return render_template("404.html")
+    else:
+        return render_template("animal.html", title=animal.get("nom"), animal=animal)
 
 @app.route("/form", methods=["POST", "GET"])
 def form():
@@ -109,4 +112,4 @@ def validate():
 
 @app.errorhandler(404)
 def not_found(e):
-    return render_template('404.html'), 404
+    return render_template("404.html"), 404

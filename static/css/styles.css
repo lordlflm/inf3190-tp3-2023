@@ -107,6 +107,17 @@ body {
 .home-search-bar form {
     height: 50%;
     width: 50%;
+    display: flex;
+}
+
+button#search-bar-submit {
+    margin: 2% 2% 0 2%;
+    height: 2em;
+    background-color: rgb(228, 191, 92);
+}
+
+button#search-bar-submit:hover {
+    background-color: rgb(250, 117, 0);
 }
 
 .home-search-bar input {
@@ -114,11 +125,6 @@ body {
     height: 100%;
     font-size: large;
     text-align: center;
-}
-
-/* TODO */
-.search-bar-form {
-    display: inline;
 }
 
 .single-animal-display {
@@ -272,7 +278,18 @@ div.error-msg-div p {
     padding: 0.2em;
 }
 
-.content-404 {
+div.content-404 {
     text-align: center;
     color: red;
+    height: 100px;
+    padding-top: 3%;
+    margin-top: 2%;
+}
+
+div.content-404 h3 {
+    border-style: solid;
+    border-color: black;
+    border-width: 0.1em;
+    margin: 0 25%;
+    padding: 1%;
 }
