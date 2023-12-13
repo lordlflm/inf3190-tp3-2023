@@ -31,5 +31,5 @@ $ make
 Se rendre sur `http://127.0.0.1:5000` pour visualiser le site.
 
 ## Notes au correcteur
-- Lorsque l'utilisateur ajoute manuellement un identifiant d'animal qui n'existe pas, le serveur retourne un statut 500 alors que je voudrais qu'il retourne un statut 404. Je ne suis pas parvenu à régler ce problème.
-- Le chat Julianne a été ajouté 5 fois à la base de donnée lors des tests initiaux (ce ne sont pas les mêmes chats car ils ont des identifiants différents)
+- Le répertoire `.venv` est déjà dans le projet. Il est possible de procéder à l'installation en le laissant là ou en l'enlevant. À noter aussi que si vous avez une version différente de Python3, vous devrez probablement re-batir `.venv` en suivant les étapes ci-dessus, mais le comportement du programme devrait être le même.
+- Le chat Julianne a été ajouté 5 fois à la base de donnée lors des tests initiaux (ce ne sont pas les mêmes chats car ils ont des identifiants différents) Bonne correction !
